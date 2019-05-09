@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 08, 2019 at 06:35 PM
+-- Generation Time: May 09, 2019 at 08:12 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -41,6 +41,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`name`, `username`, `password`, `sec_q`, `answer`) VALUES
+('Syed Faheem Shah', 'freaky', '03485583125', 'What your First School?', 'HighSchool'),
+('Muhammad Talha Waseem', 'mtwabbaxi', '03485583125', 'What Your Childhood Name?', 'mtw'),
 ('Sheryar Hassan Khan', 'sheri', '03485583125', 'What Your Mother Tongue?', 'Irani');
 
 --
