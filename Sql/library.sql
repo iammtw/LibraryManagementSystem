@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2019 at 09:37 AM
+-- Generation Time: May 10, 2019 at 08:14 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -43,6 +43,38 @@ CREATE TABLE `book` (
 
 INSERT INTO `book` (`bookid`, `name`, `edition`, `publisher`, `price`, `pages`) VALUES
 (85, 'Physics', 3, 'Arcyl', '400', 36);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `issuebooks`
+--
+
+CREATE TABLE `issuebooks` (
+  `bookid` int(255) NOT NULL,
+  `bname` varchar(255) NOT NULL,
+  `edition` int(255) NOT NULL,
+  `date` varchar(255) NOT NULL,
+  `sname` varchar(255) NOT NULL,
+  `course` varchar(255) NOT NULL,
+  `studentid` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `returnbooks`
+--
+
+CREATE TABLE `returnbooks` (
+  `id` int(11) NOT NULL,
+  `bookid` int(255) NOT NULL,
+  `studentid` int(255) NOT NULL,
+  `bookname` varchar(255) NOT NULL,
+  `studentname` varchar(255) NOT NULL,
+  `issuedate` varchar(255) NOT NULL,
+  `returndate` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -96,10 +128,26 @@ INSERT INTO `users` (`name`, `username`, `password`, `sec_q`, `answer`) VALUES
 --
 
 --
+-- Indexes for table `returnbooks`
+--
+ALTER TABLE `returnbooks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `returnbooks`
+--
+ALTER TABLE `returnbooks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

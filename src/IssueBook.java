@@ -50,6 +50,11 @@ public class IssueBook extends javax.swing.JFrame {
         jButton4.setFocusable(false);
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel7.setText("Date of Issue");
@@ -316,6 +321,11 @@ public class IssueBook extends javax.swing.JFrame {
 JOptionPane.showMessageDialog(null,ex);
         }  
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        setVisible(false);
+        new dashboard().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
