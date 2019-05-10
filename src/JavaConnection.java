@@ -10,6 +10,7 @@ public class JavaConnection {
             return conn;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Connection Failed");
+            System.exit(0);
             Logger.getLogger(JavaConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;

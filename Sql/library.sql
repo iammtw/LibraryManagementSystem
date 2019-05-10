@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2019 at 08:12 PM
+-- Generation Time: May 10, 2019 at 09:37 AM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -25,6 +25,51 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `book`
+--
+
+CREATE TABLE `book` (
+  `bookid` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `edition` int(255) NOT NULL,
+  `publisher` varchar(255) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `pages` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `book`
+--
+
+INSERT INTO `book` (`bookid`, `name`, `edition`, `publisher`, `price`, `pages`) VALUES
+(85, 'Physics', 3, 'Arcyl', '400', 36);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student`
+--
+
+CREATE TABLE `student` (
+  `studentid` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `fathername` varchar(255) NOT NULL,
+  `course` varchar(255) NOT NULL,
+  `branch` varchar(255) NOT NULL,
+  `year` int(255) NOT NULL,
+  `semester` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student`
+--
+
+INSERT INTO `student` (`studentid`, `name`, `fathername`, `course`, `branch`, `year`, `semester`) VALUES
+(281, 'Muhammad Talha Waseem', 'Tahir Waseem Raza', 'BSE', 'Islamabad', 2019, 3);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -41,6 +86,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`name`, `username`, `password`, `sec_q`, `answer`) VALUES
+('Administrator', 'admin', 'admin', 'What Your Mother Tongue?', 'urdu'),
 ('Syed Faheem Shah', 'freaky', '03485583125', 'What your First School?', 'HighSchool'),
 ('Muhammad Talha Waseem', 'mtwabbaxi', '03485583125', 'What Your Childhood Name?', 'mtw'),
 ('Sheryar Hassan Khan', 'sheri', '03485583125', 'What Your Mother Tongue?', 'Irani');
