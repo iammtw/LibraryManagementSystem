@@ -193,8 +193,8 @@ public class Forgot extends javax.swing.JFrame {
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs =  st.executeQuery();
             if(rs.next()){
-                name.setText(rs.getString(1));
-                sec_q.setText(rs.getString(4));
+                name.setText(rs.getString(2));
+                sec_q.setText(rs.getString(5));
                 username.setEditable(false);
             } else {
                 JOptionPane.showMessageDialog(null,"User Not Found");
@@ -218,7 +218,7 @@ public class Forgot extends javax.swing.JFrame {
             st.setString(2, Answer);
             ResultSet rs =  st.executeQuery();
             if(rs.next()){
-                password.setText(rs.getString(3));
+                password.setText(rs.getString(4));
                 answer.setEditable(false);
             } else {
                 JOptionPane.showMessageDialog(null,"Wrong Answer! Please Try Again.");
@@ -272,7 +272,11 @@ UIManager.setLookAndFeel("com.jtattoo.plaf.acryl.AcrylLookAndFeel");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Forgot().setVisible(true);
+                try {
+                    new Forgot().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Forgot.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

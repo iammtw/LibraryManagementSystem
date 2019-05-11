@@ -1,22 +1,37 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 public class Book extends javax.swing.JFrame {
     Connection conn;
-    public Book() throws ClassNotFoundException {
+    public Book() throws ClassNotFoundException, SQLException {
         super("Add a New Book");
         conn = JavaConnection.ConnectDB();
         initComponents();
-        random();
+        autoGenerate();
     }
     
-    private void random(){
-        Random number = new Random();
-        bookid.setText(""+number.nextInt(1000+1));
+
+    
+    @SuppressWarnings("empty-statement")
+    public void autoGenerate() throws SQLException{
+        String sql = "SELECT * from book ORDER BY id DESC limit 1";
+        PreparedStatement st = conn.prepareStatement(sql);
+        ResultSet rs =  st.executeQuery(sql);
+        if (rs.next()){
+            int id = (Integer.parseInt(rs.getString("id")))+1;
+            String insertedID = Integer.toString(id); ;
+            bookid.setText(insertedID);
+        } else {
+            int id = 1;
+            String insertedID = Integer.toString(id); ;
+            bookid.setText(insertedID);
+        } 
     }
 
     @SuppressWarnings("unchecked")
@@ -188,7 +203,7 @@ public class Book extends javax.swing.JFrame {
         String Price = price.getText();
         String Pages = pages.getText();
         try{
-            String sql = "INSERT into book values(?,?,?,?,?,?)";
+            String sql = "INSERT into book(bookid,name,edition,publisher,price,pages) values(?,?,?,?,?,?)";
             PreparedStatement st = conn.prepareStatement(sql);
             
             st.setString(1, BookID);
@@ -240,6 +255,8 @@ public class Book extends javax.swing.JFrame {
                 try {
                     new Book().setVisible(true);
                 } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
                     Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

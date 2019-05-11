@@ -229,9 +229,9 @@ public class Return extends javax.swing.JFrame {
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs =  st.executeQuery();
             if(rs.next()){
-                bookname.setText(rs.getString(2));
-                studentname.setText(rs.getString(5));
-                issuedate.setText(rs.getString(4));
+                bookname.setText(rs.getString(3));
+                studentname.setText(rs.getString(6));
+                issuedate.setText(rs.getString(5));
             } else {
                 JOptionPane.showMessageDialog(null,"This Book is not Issued to this Student.");
             }
@@ -243,17 +243,18 @@ public class Return extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
-            delete();
-        } catch (SQLException ex) {
-            Logger.getLogger(Return.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
             returnUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(Return.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Return.class.getName()).log(Level.SEVERE, null, ex);
         }
+        try {
+            delete();
+        } catch (SQLException ex) {
+            Logger.getLogger(Return.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void delete() throws SQLException{
@@ -265,7 +266,7 @@ public class Return extends javax.swing.JFrame {
     }
     
     public void returnUpdate() throws SQLException, ClassNotFoundException{
-        String sql2 = "INSERT into returnbooks values(?,?,?,?,?,?) ";
+        String sql2 = "INSERT into returnbooks(bookid,studentid,bookname,studentname,issuedate,returndate) values(?,?,?,?,?,?) ";
         PreparedStatement st = conn.prepareStatement(sql2);
         st.setString(1, bookid.getText());
         st.setString(2, studentid.getText());

@@ -165,7 +165,7 @@ public class Signup extends javax.swing.JFrame {
         String Security_question = ((String)sec_q.getSelectedItem());
         String Answer = answer.getText();
         try{
-            String sql = "INSERT into users values(?,?,?,?,?)";
+            String sql = "INSERT into users(name,username,password,sec_q,answer) values(?,?,?,?,?)";
             PreparedStatement st = conn.prepareStatement(sql);
             
             st.setString(1, Name);

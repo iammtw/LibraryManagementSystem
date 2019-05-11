@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2019 at 08:14 PM
+-- Generation Time: May 11, 2019 at 06:38 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `book` (
+  `id` int(11) NOT NULL,
   `bookid` int(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `edition` int(255) NOT NULL,
@@ -41,8 +42,9 @@ CREATE TABLE `book` (
 -- Dumping data for table `book`
 --
 
-INSERT INTO `book` (`bookid`, `name`, `edition`, `publisher`, `price`, `pages`) VALUES
-(85, 'Physics', 3, 'Arcyl', '400', 36);
+INSERT INTO `book` (`id`, `bookid`, `name`, `edition`, `publisher`, `price`, `pages`) VALUES
+(1, 1, 'Physics', 1, 'NameCheap', '400', 150),
+(2, 2, 'Chemister', 1, 'GoDaddy', '500', 200);
 
 -- --------------------------------------------------------
 
@@ -51,6 +53,7 @@ INSERT INTO `book` (`bookid`, `name`, `edition`, `publisher`, `price`, `pages`) 
 --
 
 CREATE TABLE `issuebooks` (
+  `id` int(11) NOT NULL,
   `bookid` int(255) NOT NULL,
   `bname` varchar(255) NOT NULL,
   `edition` int(255) NOT NULL,
@@ -59,6 +62,13 @@ CREATE TABLE `issuebooks` (
   `course` varchar(255) NOT NULL,
   `studentid` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `issuebooks`
+--
+
+INSERT INTO `issuebooks` (`id`, `bookid`, `bname`, `edition`, `date`, `sname`, `course`, `studentid`) VALUES
+(2, 2, 'Chemister', 1, '5/11/19', 'Muhammad Talha Waseem', 'BSE', 1);
 
 -- --------------------------------------------------------
 
@@ -76,6 +86,13 @@ CREATE TABLE `returnbooks` (
   `returndate` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `returnbooks`
+--
+
+INSERT INTO `returnbooks` (`id`, `bookid`, `studentid`, `bookname`, `studentname`, `issuedate`, `returndate`) VALUES
+(3, 1, 1, 'Physics', 'Muhammad Talha Waseem', '5/1/19', '5/11/19');
+
 -- --------------------------------------------------------
 
 --
@@ -83,6 +100,7 @@ CREATE TABLE `returnbooks` (
 --
 
 CREATE TABLE `student` (
+  `id` int(11) NOT NULL,
   `studentid` int(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `fathername` varchar(255) NOT NULL,
@@ -96,8 +114,9 @@ CREATE TABLE `student` (
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`studentid`, `name`, `fathername`, `course`, `branch`, `year`, `semester`) VALUES
-(281, 'Muhammad Talha Waseem', 'Tahir Waseem Raza', 'BSE', 'Islamabad', 2019, 3);
+INSERT INTO `student` (`id`, `studentid`, `name`, `fathername`, `course`, `branch`, `year`, `semester`) VALUES
+(1, 1, 'Muhammad Talha Waseem', 'Tahir Waseem Raza', 'BSE', 'Islamabad', 2018, 3),
+(2, 2, 'Muhammad Usman Amjad', 'Amjad', 'BSE', 'Islamabad', 2018, 3);
 
 -- --------------------------------------------------------
 
@@ -106,6 +125,7 @@ INSERT INTO `student` (`studentid`, `name`, `fathername`, `course`, `branch`, `y
 --
 
 CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -117,15 +137,26 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`name`, `username`, `password`, `sec_q`, `answer`) VALUES
-('Administrator', 'admin', 'admin', 'What Your Mother Tongue?', 'urdu'),
-('Syed Faheem Shah', 'freaky', '03485583125', 'What your First School?', 'HighSchool'),
-('Muhammad Talha Waseem', 'mtwabbaxi', '03485583125', 'What Your Childhood Name?', 'mtw'),
-('Sheryar Hassan Khan', 'sheri', '03485583125', 'What Your Mother Tongue?', 'Irani');
+INSERT INTO `users` (`id`, `name`, `username`, `password`, `sec_q`, `answer`) VALUES
+(2, 'Muhammad Talha Waseem', 'mtwabbaxi', '03485583125', 'What Your Childhood Name?', 'mtw'),
+(3, 'Administrator', 'admin', 'admin', 'What Your Mother Tongue?', 'urdu'),
+(4, 'Sheryar Hassan Khan', 'sheri', '12345', 'What Your Childhood Name?', 'sheri');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `book`
+--
+ALTER TABLE `book`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `issuebooks`
+--
+ALTER TABLE `issuebooks`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `returnbooks`
@@ -134,20 +165,50 @@ ALTER TABLE `returnbooks`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `student`
+--
+ALTER TABLE `student`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`username`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
+-- AUTO_INCREMENT for table `book`
+--
+ALTER TABLE `book`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `issuebooks`
+--
+ALTER TABLE `issuebooks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `returnbooks`
 --
 ALTER TABLE `returnbooks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `student`
+--
+ALTER TABLE `student`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

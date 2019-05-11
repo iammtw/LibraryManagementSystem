@@ -1,21 +1,34 @@
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Student extends javax.swing.JFrame {
     Connection conn;
-    public Student() throws ClassNotFoundException {
+    public Student() throws ClassNotFoundException, SQLException {
         super("Add a New Student");
         conn = JavaConnection.ConnectDB();
         initComponents();
-        random();
+        autoGenerate();
     }
     
-    private void random(){
-        Random number = new Random();
-        studentid.setText(""+number.nextInt(1000+1));
+    public void autoGenerate() throws SQLException{
+        String sql = "SELECT * from student ORDER BY id DESC limit 1";
+        PreparedStatement st = conn.prepareStatement(sql);
+        ResultSet rs =  st.executeQuery(sql);
+        if (rs.next()){
+            int id = (Integer.parseInt(rs.getString(1)))+1;
+            String insertedID = Integer.toString(id); ;
+            studentid.setText(insertedID);
+        } else {
+            int id = 1;
+            String insertedID = Integer.toString(id); ;
+            studentid.setText(insertedID);
+        } 
     }
 
     @SuppressWarnings("unchecked")
@@ -202,7 +215,7 @@ public class Student extends javax.swing.JFrame {
         String Year = ((String)year.getSelectedItem());
         String Semester = ((String)semester.getSelectedItem());
         try{
-            String sql = "INSERT into student values(?,?,?,?,?,?,?)";
+            String sql = "INSERT into student(studentid,name,fathername,course,branch,year,semester) values(?,?,?,?,?,?,?)";
             PreparedStatement st = conn.prepareStatement(sql);
             
             st.setString(1, StudentID);
@@ -252,7 +265,13 @@ public class Student extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Student().setVisible(true);
+                try {
+                    new Student().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Student.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

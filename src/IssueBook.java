@@ -258,8 +258,8 @@ public class IssueBook extends javax.swing.JFrame {
             PreparedStatement st = conn.prepareStatement(sql);
             ResultSet rs =  st.executeQuery();
             if(rs.next()){
-                bName.setText(rs.getString(2));
-                bEdition.setText(rs.getString(3));
+                bName.setText(rs.getString(3));
+                bEdition.setText(rs.getString(4));
             } else {
                 JOptionPane.showMessageDialog(null,"Book Not Found");
             }
@@ -277,8 +277,8 @@ public class IssueBook extends javax.swing.JFrame {
             PreparedStatement st = conn.prepareStatement(sql2);
             ResultSet rs1 =  st.executeQuery();
             if(rs1.next()){
-                sName.setText(rs1.getString(2));
-                sCourse.setText(rs1.getString(4));
+                sName.setText(rs1.getString(3));
+                sCourse.setText(rs1.getString(5));
             } else {
                 JOptionPane.showMessageDialog(null,"Student Not Found");
             }
@@ -301,7 +301,7 @@ public class IssueBook extends javax.swing.JFrame {
         System.out.println(issueDate);
        
         try{
-            String sql3 = "INSERT into issuebooks values(?,?,?,?,?,?,?)";
+            String sql3 = "INSERT into issuebooks(bookid,bname,edition,date,sname,course,studentid) values(?,?,?,?,?,?,?)";
             PreparedStatement st = conn.prepareStatement(sql3);
             
             st.setString(1, BookID);

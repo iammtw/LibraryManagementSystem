@@ -336,6 +336,8 @@ public class dashboard extends javax.swing.JFrame {
             new Book().setVisible(true);
         } catch(ClassNotFoundException e){
             System.out.println("Book Class Not Found!!");
+        } catch (SQLException ex) {
+            Logger.getLogger(dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -345,6 +347,8 @@ public class dashboard extends javax.swing.JFrame {
         try {
             new Student().setVisible(true);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
             Logger.getLogger(dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -385,13 +389,19 @@ public class dashboard extends javax.swing.JFrame {
             new Book().setVisible(true);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(dashboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         setVisible(false);
         try {
-            new Student().setVisible(true);
+            try {
+                new Student().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(dashboard.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(dashboard.class.getName()).log(Level.SEVERE, null, ex);
         }
