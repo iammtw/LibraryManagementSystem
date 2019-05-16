@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2019 at 06:38 PM
+-- Generation Time: May 16, 2019 at 07:25 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -107,16 +107,20 @@ CREATE TABLE `student` (
   `course` varchar(255) NOT NULL,
   `branch` varchar(255) NOT NULL,
   `year` int(255) NOT NULL,
-  `semester` int(255) NOT NULL
+  `semester` int(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
-INSERT INTO `student` (`id`, `studentid`, `name`, `fathername`, `course`, `branch`, `year`, `semester`) VALUES
-(1, 1, 'Muhammad Talha Waseem', 'Tahir Waseem Raza', 'BSE', 'Islamabad', 2018, 3),
-(2, 2, 'Muhammad Usman Amjad', 'Amjad', 'BSE', 'Islamabad', 2018, 3);
+INSERT INTO `student` (`id`, `studentid`, `name`, `fathername`, `course`, `branch`, `year`, `semester`, `password`, `email`) VALUES
+(1, 1, 'Muhammad Talha Waseem', 'Tahir Waseem Raza', 'BSE', 'Islamabad', 2018, 3, 'comsats', 'mtw@gmail.com'),
+(2, 2, 'Sheryar Hassan Khan', 'Pta nh', 'BSE', 'Islamabad', 2018, 3, 'comsats', 'sheryarhassankhan@gmail.com'),
+(3, 3, 'Syed Faheem Shah', 'Pta nh', 'BSE', 'Islamabad', 2018, 3, 'comsats', 'syedfaheemshah@gmail.com'),
+(4, 4, 'admin', 'admin', 'BSE', 'Islamabad', 2019, 4, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -190,7 +194,7 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT for table `issuebooks`
 --
 ALTER TABLE `issuebooks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `returnbooks`
@@ -202,13 +206,13 @@ ALTER TABLE `returnbooks`
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
