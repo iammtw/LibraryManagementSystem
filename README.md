@@ -18,9 +18,9 @@ This Project Includes
        - Search Through Author
     - View Issue Books
 - Additonal Screens
-       - Add Shortcuts
-       - Logout/Quit
-       - About Page
+   - Add Shortcuts
+   - Logout/Quit
+   - About Page
        
  #### Best For Beginners
 
