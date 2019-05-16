@@ -16,6 +16,7 @@ This Project Includes
        - Search Through ISBN
        - Search Through Name
        - Search Through Author
+    - View Issue Books
 - Additonal Screens
        - Add Shortcuts
        - Logout/Quit
