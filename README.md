@@ -1,5 +1,5 @@
 # LibraryManagementSystem
-This is the Semester project of Oject Oriented Programming Course.
+This is the Semester project of Object Oriented Programming Course.
 
 This Project Includes
 
@@ -23,4 +23,4 @@ This Project Includes
    - Logout/Quit
    - About Page
 
- # Best For Beginners
+ ### Best For Beginners
