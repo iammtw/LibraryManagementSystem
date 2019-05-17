@@ -145,7 +145,7 @@ public class StdIssueBooks extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         setVisible(false);
-        new MainScreen().setVisible(true);
+        new Stddashboard(id).setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
