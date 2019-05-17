@@ -235,7 +235,7 @@ public class Statistics extends javax.swing.JFrame {
     }
     
     public void bookTable() throws SQLException{
-        String sql = "SELECT bookid,name,edition,publisher,price,pages from book";
+        String sql = "SELECT bookid,name,edition,publisher,price,author,category from book";
         PreparedStatement st = conn.prepareStatement(sql);
         ResultSet rs =  st.executeQuery();
         booksTable.setModel(DbUtils.resultSetToTableModel(rs));

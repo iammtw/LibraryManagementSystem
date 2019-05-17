@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 public class StdProfile extends javax.swing.JFrame {
     Connection conn;
-   static String id;
+    static String id;
     public StdProfile(String id) throws ClassNotFoundException, SQLException {
         super("Your Account");
         this.id = id;
