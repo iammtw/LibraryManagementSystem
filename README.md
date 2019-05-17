@@ -19,8 +19,8 @@ This Project Includes
        - Search Through Category
     - View Issued Books
 - Additonal Screens
-       - Add Shortcuts
-       - Logout/Quit
-       - About Page
+   - Add Shortcuts
+   - Logout/Quit
+   - About Page
 
  # Best For Beginners
