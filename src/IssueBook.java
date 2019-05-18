@@ -1,4 +1,5 @@
 
+import com.sun.glass.events.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -86,6 +87,12 @@ public class IssueBook extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel3.setText("Edition");
 
+        bookid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                bookidKeyTyped(evt);
+            }
+        });
+
         bEdition.setEditable(false);
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
@@ -145,6 +152,12 @@ public class IssueBook extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel5.setText("Course");
+
+        studentid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                studentidKeyTyped(evt);
+            }
+        });
 
         sCourse.setEditable(false);
 
@@ -326,6 +339,22 @@ JOptionPane.showMessageDialog(null,ex);
         setVisible(false);
         new dashboard().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void bookidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bookidKeyTyped
+       char c = evt.getKeyChar();
+       if(!(Character.isDigit(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+           getToolkit().beep();
+           evt.consume();
+       }
+    }//GEN-LAST:event_bookidKeyTyped
+
+    private void studentidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_studentidKeyTyped
+       char c = evt.getKeyChar();
+       if(!(Character.isDigit(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+           getToolkit().beep();
+           evt.consume();
+       }
+    }//GEN-LAST:event_studentidKeyTyped
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

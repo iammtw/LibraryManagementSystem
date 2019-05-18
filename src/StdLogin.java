@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.*;
 import javax.swing.JOptionPane;
 public class StdLogin extends javax.swing.JFrame {
     Connection conn;
@@ -34,6 +35,11 @@ public class StdLogin extends javax.swing.JFrame {
         jLabel1.setText("Email");
 
         email.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                emailActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
         jLabel2.setText("Password");
@@ -126,7 +132,12 @@ public class StdLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         String Email = email.getText();
         String Password = password.getText();
-        try{
+        Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(Email);
+        if(!matcher.matches()) {
+            JOptionPane.showMessageDialog(null, "Please Enter Correct Email Format.");
+        }else{
+            try{
             String sql = "SELECT * from student where email = ? and password = ?";
             PreparedStatement st = conn.prepareStatement(sql);
             st.setString(1, Email);
@@ -145,12 +156,18 @@ public class StdLogin extends javax.swing.JFrame {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,ex);
         }
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         setVisible(false);
         new MainScreen().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_emailActionPerformed
 
     /**
      * @param args the command line arguments

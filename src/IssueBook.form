@@ -228,6 +228,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="bookid">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="bookidKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="bEdition">
               <Properties>
@@ -340,6 +343,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="studentid">
+              <Events>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="studentidKeyTyped"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="sCourse">
               <Properties>

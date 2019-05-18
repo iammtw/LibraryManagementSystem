@@ -1,3 +1,4 @@
+import com.sun.glass.events.KeyEvent;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -37,6 +38,12 @@ public class Signup extends javax.swing.JFrame {
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel7.setText("Answer");
+
+        name.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nameKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel5.setText("Password");
@@ -186,6 +193,14 @@ public class Signup extends javax.swing.JFrame {
         
 //        System.out.println("Name is: "+Name+"\nUsername is "+Username+"\nPassword is: "+Password+"\nSecurity "+Security_question+"\nAnswer is "+ Answer);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyTyped
+        char c = evt.getKeyChar();
+        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_nameKeyTyped
 
     /**
      * @param args the command line arguments

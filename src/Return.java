@@ -1,3 +1,4 @@
+import com.sun.glass.events.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -69,8 +70,20 @@ public class Return extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Searching", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Trebuchet MS", 1, 18), new java.awt.Color(255, 0, 255))); // NOI18N
 
+        studentid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                studentidKeyTyped(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 14)); // NOI18N
         jLabel2.setText("Student ID");
+
+        bookid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                bookidKeyTyped(evt);
+            }
+        });
 
         jButton1.setText("Search");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -256,6 +269,22 @@ public class Return extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void bookidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bookidKeyTyped
+         char c = evt.getKeyChar();
+       if(!(Character.isDigit(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+           getToolkit().beep();
+           evt.consume();
+       }
+    }//GEN-LAST:event_bookidKeyTyped
+
+    private void studentidKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_studentidKeyTyped
+       char c = evt.getKeyChar();
+       if(!(Character.isDigit(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+           getToolkit().beep();
+           evt.consume();
+       }
+    }//GEN-LAST:event_studentidKeyTyped
 
     public void delete() throws SQLException{
         String sql1 = "DELETE from issuebooks where bookid = ? and studentid = ? ";
