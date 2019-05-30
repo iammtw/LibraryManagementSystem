@@ -1,4 +1,3 @@
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
@@ -168,6 +167,7 @@ public class MainScreen extends javax.swing.JFrame {
 // UIManager.setLookAndFeel("com.jtattoo.plaf.hifi.HiFiLookAndFeel");
 UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
 //UIManager.setLookAndFeel("com.jtattoo.plaf.noire.NoireLookAndFeel");
+//UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
     
             }
         } catch (ClassNotFoundException ex) {

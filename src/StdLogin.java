@@ -1,3 +1,4 @@
+import com.sun.glass.events.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -53,6 +54,11 @@ public class StdLogin extends javax.swing.JFrame {
         });
 
         password.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        password.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordKeyPressed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/images/back.png"))); // NOI18N
         jButton4.setContentAreaFilled(false);
@@ -128,8 +134,8 @@ public class StdLogin extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    public void studentLogin(){
+         // TODO add your handling code here:
         String Email = email.getText();
         String Password = password.getText();
         Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -157,6 +163,11 @@ public class StdLogin extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,ex);
         }
         }
+    
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       studentLogin();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -168,6 +179,13 @@ public class StdLogin extends javax.swing.JFrame {
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailActionPerformed
+
+    private void passwordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            studentLogin();
+        }
+           
+    }//GEN-LAST:event_passwordKeyPressed
 
     /**
      * @param args the command line arguments

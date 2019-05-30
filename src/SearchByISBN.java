@@ -40,6 +40,9 @@ public class SearchByISBN extends javax.swing.JFrame {
 
         search.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 searchKeyTyped(evt);
             }
@@ -134,7 +137,7 @@ public class SearchByISBN extends javax.swing.JFrame {
         new Search().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    public void isbn(){
         String searchText = search.getText();
         try {
             String sql = "SELECT name,bookid,edition,publisher,price,author,category from book WHERE bookid = ?";
@@ -145,6 +148,10 @@ public class SearchByISBN extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(SearchByISBN.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        isbn();
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -155,6 +162,12 @@ public class SearchByISBN extends javax.swing.JFrame {
            evt.consume();
        }
     }//GEN-LAST:event_searchKeyTyped
+
+    private void searchKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            isbn();
+        }
+    }//GEN-LAST:event_searchKeyPressed
 
     /**
      * @param args the command line arguments
