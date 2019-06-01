@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import java.util.regex.*;
 import javax.swing.JOptionPane;
 public class StdLogin extends javax.swing.JFrame {
+    public static boolean isLoggedIn = false;
     Connection conn;
     public StdLogin() throws ClassNotFoundException {
          super("Student Login");
@@ -152,6 +153,7 @@ public class StdLogin extends javax.swing.JFrame {
             if (rs.next()){
                 String id = rs.getString(2);
                 StdSplash s = new StdSplash(id);
+                StdLogin.isLoggedIn = true;
                 s.setUpload();
                 s.setVisible(true);
                 setVisible(false);

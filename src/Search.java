@@ -165,7 +165,13 @@ public class Search extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         setVisible(false);
-        new MainScreen().setVisible(true);
+        if(StdLogin.isLoggedIn){
+           new Stddashboard().setVisible(true); 
+        } else {
+         new MainScreen().setVisible(true);
+        }
+//        new MainScreen().setVisible(true);
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

@@ -160,6 +160,7 @@ String StdID;
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         setVisible(false);
+        StdLogin.isLoggedIn = false;
         try {
             new StdLogin().setVisible(true);
         } catch (ClassNotFoundException ex) {
