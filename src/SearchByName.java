@@ -140,7 +140,8 @@ public class SearchByName extends javax.swing.JFrame {
     }
     private void searchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyTyped
         char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }

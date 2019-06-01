@@ -288,24 +288,27 @@ public class Student extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyTyped
-        char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+         char c = evt.getKeyChar();
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }
     }//GEN-LAST:event_nameKeyTyped
 
     private void fathernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fathernameKeyTyped
-        char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+         char c = evt.getKeyChar();
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }
     }//GEN-LAST:event_fathernameKeyTyped
 
     private void branchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_branchKeyTyped
-        char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+         char c = evt.getKeyChar();
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }

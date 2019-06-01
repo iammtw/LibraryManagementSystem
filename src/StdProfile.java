@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 public class StdProfile extends javax.swing.JFrame {
@@ -273,50 +275,59 @@ public class StdProfile extends javax.swing.JFrame {
         String Semester = ((String)semester.getSelectedItem());
         String Password = password.getText();
         String Email = email.getText();
+        
+        Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(Email);
+        if(!matcher.matches()) {
+            JOptionPane.showMessageDialog(null, "Please Enter Correct Email Format.");
+        }else{
+            try{
+                String sql = "Update student set studentid = ?,name = ?,fathername = ?,course =?,branch =?,year =?,semester=?,password=?,email=? where studentid = ?";
+                PreparedStatement st = conn.prepareStatement(sql);
 
-        try{
-            String sql = "Update student set studentid = ?,name = ?,fathername = ?,course =?,branch =?,year =?,semester=?,password=?,email=? where studentid = ?";
-            PreparedStatement st = conn.prepareStatement(sql);
+                st.setString(1, StudentID);
+                st.setString(2, Name);
+                st.setString(3, FatherName);
+                st.setString(4, Course);
+                st.setString(5, Branch);
+                st.setString(6, Year);
+                st.setString(7, Semester);
+                st.setString(8, Password);
+                st.setString(9, Email);
+                st.setString(10, StudentID);
+                st.execute();
+                JOptionPane.showMessageDialog(null, "Updated Successfully!!");
+                setVisible(false);
+                new Stddashboard(StudentID).setVisible(true);
 
-            st.setString(1, StudentID);
-            st.setString(2, Name);
-            st.setString(3, FatherName);
-            st.setString(4, Course);
-            st.setString(5, Branch);
-            st.setString(6, Year);
-            st.setString(7, Semester);
-            st.setString(8, Password);
-            st.setString(9, Email);
-            st.setString(10, StudentID);
-            st.execute();
-            JOptionPane.showMessageDialog(null, "Updated Successfully!!");
-            setVisible(false);
-            new Stddashboard(StudentID).setVisible(true);
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null,ex);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,ex);
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyTyped
        char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }
     }//GEN-LAST:event_nameKeyTyped
 
     private void fathernameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fathernameKeyTyped
-        char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+         char c = evt.getKeyChar();
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }
     }//GEN-LAST:event_fathernameKeyTyped
 
     private void branchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_branchKeyTyped
-        char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+         char c = evt.getKeyChar();
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }

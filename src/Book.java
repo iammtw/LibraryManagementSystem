@@ -303,7 +303,8 @@ public class Book extends javax.swing.JFrame {
 
     private void nameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyTyped
         char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }
@@ -311,7 +312,8 @@ public class Book extends javax.swing.JFrame {
 
     private void publisherKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_publisherKeyTyped
         char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }
@@ -319,7 +321,8 @@ public class Book extends javax.swing.JFrame {
 
     private void categoryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_categoryKeyTyped
        char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }
@@ -327,7 +330,8 @@ public class Book extends javax.swing.JFrame {
 
     private void authorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_authorKeyTyped
         char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }

@@ -155,7 +155,7 @@ public class Signup extends javax.swing.JFrame {
                                 .addGap(3, 3, 3)
                                 .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -226,7 +226,8 @@ public class Signup extends javax.swing.JFrame {
 
     private void nameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyTyped
         char c = evt.getKeyChar();
-        if(!(Character.isLetter(c)) || (c==KeyEvent.VK_BACKSPACE) || (c == KeyEvent.VK_DELETE)) {
+        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
+        } else {
             getToolkit().beep();
             evt.consume();
         }
