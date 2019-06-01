@@ -55,9 +55,9 @@ public class Book extends javax.swing.JFrame {
         edition = new javax.swing.JComboBox<>();
         bookid = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        category = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         author = new javax.swing.JTextField();
+        category = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -132,12 +132,6 @@ public class Book extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel7.setText("Category");
 
-        category.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                categoryKeyTyped(evt);
-            }
-        });
-
         jLabel8.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel8.setText("Author");
 
@@ -146,6 +140,8 @@ public class Book extends javax.swing.JFrame {
                 authorKeyTyped(evt);
             }
         });
+
+        category.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Category\t", "Novel", "Drama", "Business", "Comics", "Biographies", "Computers & Tech", "Cooking", "History", "Education" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -165,16 +161,15 @@ public class Book extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
                         .addGap(49, 49, 49)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(author, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(category, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(price, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(bookid)
-                                .addComponent(name)
-                                .addComponent(edition, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(publisher)
-                                .addComponent(pages, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(author, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(price, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(bookid)
+                            .addComponent(name)
+                            .addComponent(edition, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(publisher)
+                            .addComponent(pages, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(category, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -262,9 +257,9 @@ public class Book extends javax.swing.JFrame {
         String Price = price.getText();
         String Pages = pages.getText();
         String Author = author.getText();
-        String Category = category.getText();
+        String Category = (String) category.getSelectedItem();
         try{
-            String sql = "INSERT into book(bookid,name,edition,publisher,price,pages,author,category) values(?,?,?,?,?,?)";
+            String sql = "INSERT into book(bookid,name,edition,publisher,price,pages,author,category) values(?,?,?,?,?,?,?,?)";
             PreparedStatement st = conn.prepareStatement(sql);
             
             st.setString(1, BookID);
@@ -319,15 +314,6 @@ public class Book extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_publisherKeyTyped
 
-    private void categoryKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_categoryKeyTyped
-       char c = evt.getKeyChar();
-        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
-        } else {
-            getToolkit().beep();
-            evt.consume();
-        }
-    }//GEN-LAST:event_categoryKeyTyped
-
     private void authorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_authorKeyTyped
         char c = evt.getKeyChar();
         if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
@@ -381,7 +367,7 @@ public class Book extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField author;
     private javax.swing.JTextField bookid;
-    private javax.swing.JTextField category;
+    private javax.swing.JComboBox<String> category;
     private javax.swing.JComboBox<String> edition;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

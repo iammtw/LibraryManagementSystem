@@ -84,21 +84,19 @@
                   </Group>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="email" max="32767" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="course" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Component id="branch" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Component id="year" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Component id="semester" min="-2" pref="170" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="name" pref="170" max="32767" attributes="0"/>
-                                  <Component id="studentid" max="32767" attributes="0"/>
-                                  <Component id="fathername" alignment="0" max="32767" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="course" pref="170" max="32767" attributes="0"/>
+                              <Component id="year" pref="170" max="32767" attributes="0"/>
+                              <Component id="semester" pref="170" max="32767" attributes="0"/>
+                              <Component id="name" pref="170" max="32767" attributes="0"/>
+                              <Component id="studentid" max="32767" attributes="0"/>
+                              <Component id="fathername" alignment="0" max="32767" attributes="0"/>
+                              <Component id="branch" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="email" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -290,11 +288,6 @@
             <Property name="text" type="java.lang.String" value="Student ID"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="branch">
-          <Events>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="branchKeyTyped"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Back"/>
@@ -323,6 +316,25 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="emailActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="branch">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="8">
+                <StringItem index="0" value="Islamabad"/>
+                <StringItem index="1" value="Lahore"/>
+                <StringItem index="2" value="Attock"/>
+                <StringItem index="3" value="Vehari"/>
+                <StringItem index="4" value="Abbotabad"/>
+                <StringItem index="5" value="Wah"/>
+                <StringItem index="6" value="Sahiwal"/>
+                <StringItem index="7" value="Virtual"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

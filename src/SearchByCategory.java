@@ -64,7 +64,7 @@ public class SearchByCategory extends javax.swing.JFrame {
         });
 
         searchItem.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        searchItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Category\t", "Novel", "Drama", "Business", "Comics", "Biographies", "Computers & Tech", "Cooking", "History" }));
+        searchItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Category\t", "Novel", "Drama", "Business", "Comics", "Biographies", "Computers & Tech", "Cooking", "History", "Education" }));
         searchItem.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 searchItemItemStateChanged(evt);

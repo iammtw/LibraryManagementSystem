@@ -51,11 +51,11 @@ public class Student extends javax.swing.JFrame {
         fathername = new javax.swing.JTextField();
         year = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        branch = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
+        branch = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -108,12 +108,6 @@ public class Student extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel1.setText("Student ID");
 
-        branch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                branchKeyTyped(evt);
-            }
-        });
-
         jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +130,8 @@ public class Student extends javax.swing.JFrame {
                 emailActionPerformed(evt);
             }
         });
+
+        branch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Islamabad", "Lahore", "Attock", "Vehari", "Abbotabad", "Wah", "Sahiwal", "Virtual" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,18 +156,17 @@ public class Student extends javax.swing.JFrame {
                     .addComponent(jLabel8))
                 .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(email)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(course, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(branch, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(year, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(semester, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
-                                .addComponent(studentid)
-                                .addComponent(fathername)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(email))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(course, 0, 170, Short.MAX_VALUE)
+                            .addComponent(year, 0, 170, Short.MAX_VALUE)
+                            .addComponent(semester, 0, 170, Short.MAX_VALUE)
+                            .addComponent(name, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(studentid)
+                            .addComponent(fathername)
+                            .addComponent(branch, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -251,7 +246,7 @@ public class Student extends javax.swing.JFrame {
         String Name = name.getText();
         String FatherName = fathername.getText();
         String Course = ((String)course.getSelectedItem());
-        String Branch = branch.getText();
+        String Branch = (String) branch.getSelectedItem();
         String Year = ((String)year.getSelectedItem());
         String Semester = ((String)semester.getSelectedItem());
         String password = "comsats";
@@ -305,15 +300,6 @@ public class Student extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_fathernameKeyTyped
 
-    private void branchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_branchKeyTyped
-         char c = evt.getKeyChar();
-        if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
-        } else {
-            getToolkit().beep();
-            evt.consume();
-        }
-    }//GEN-LAST:event_branchKeyTyped
-
     private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailActionPerformed
@@ -360,7 +346,7 @@ public class Student extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField branch;
+    private javax.swing.JComboBox<String> branch;
     private javax.swing.JComboBox<String> course;
     private javax.swing.JTextField email;
     private javax.swing.JTextField fathername;
