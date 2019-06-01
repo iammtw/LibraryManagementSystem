@@ -18,6 +18,7 @@ This Project Includes
        - Search Through Author
        - Search Through Category
     - View Issued Books
+    - Update Profile
 - Additonal Screens
    - Add Shortcuts
    - Logout/Quit
