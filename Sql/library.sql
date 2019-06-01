@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2019 at 07:25 PM
+-- Generation Time: Jun 01, 2019 at 04:09 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -35,16 +35,18 @@ CREATE TABLE `book` (
   `edition` int(255) NOT NULL,
   `publisher` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
-  `pages` int(255) NOT NULL
+  `pages` int(255) NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `category` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `book`
 --
 
-INSERT INTO `book` (`id`, `bookid`, `name`, `edition`, `publisher`, `price`, `pages`) VALUES
-(1, 1, 'Physics', 1, 'NameCheap', '400', 150),
-(2, 2, 'Chemister', 1, 'GoDaddy', '500', 200);
+INSERT INTO `book` (`id`, `bookid`, `name`, `edition`, `publisher`, `price`, `pages`, `author`, `category`) VALUES
+(1, 1, 'Physics', 1, 'NameCheap', '400', 150, 'Tm pame', 'Novel'),
+(2, 2, 'Chemistry', 1, 'GoDaddy', '500', 200, 'Jake', 'Drama');
 
 -- --------------------------------------------------------
 
@@ -120,7 +122,7 @@ INSERT INTO `student` (`id`, `studentid`, `name`, `fathername`, `course`, `branc
 (1, 1, 'Muhammad Talha Waseem', 'Tahir Waseem Raza', 'BSE', 'Islamabad', 2018, 3, 'comsats', 'mtw@gmail.com'),
 (2, 2, 'Sheryar Hassan Khan', 'Pta nh', 'BSE', 'Islamabad', 2018, 3, 'comsats', 'sheryarhassankhan@gmail.com'),
 (3, 3, 'Syed Faheem Shah', 'Pta nh', 'BSE', 'Islamabad', 2018, 3, 'comsats', 'syedfaheemshah@gmail.com'),
-(4, 4, 'admin', 'admin', 'BSE', 'Islamabad', 2019, 4, 'admin', 'admin');
+(4, 4, 'admin', 'admin', 'BSE', 'Islamabad', 2019, 4, 'admin', 'admin@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -144,7 +146,9 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `username`, `password`, `sec_q`, `answer`) VALUES
 (2, 'Muhammad Talha Waseem', 'mtwabbaxi', '03485583125', 'What Your Childhood Name?', 'mtw'),
 (3, 'Administrator', 'admin', 'admin', 'What Your Mother Tongue?', 'urdu'),
-(4, 'Sheryar Hassan Khan', 'sheri', '12345', 'What Your Childhood Name?', 'sheri');
+(4, 'Sheryar Hassan Khan', 'sheri', '12345', 'What Your Childhood Name?', 'sheri'),
+(5, 'ahmedabdullah', 'ahmed32', '03485583125', 'What Your Childhood Name?', ''),
+(6, 'ad', 'as', '`as', 'What Your Mother Tongue?', 'sdadas');
 
 --
 -- Indexes for dumped tables
@@ -212,7 +216,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
