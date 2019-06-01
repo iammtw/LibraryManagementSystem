@@ -2,22 +2,18 @@
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author Mtw
- */
 public class Search extends javax.swing.JFrame {
 
     /**
      * Creates new form Search
      */
+    public String StdID;
     public Search() {
+        initComponents();
+    }
+
+    public Search(String StdID) {
+        this.StdID = StdID;
         initComponents();
     }
 
@@ -166,7 +162,7 @@ public class Search extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         setVisible(false);
         if(StdLogin.isLoggedIn){
-           new Stddashboard().setVisible(true); 
+           new Stddashboard(StdID).setVisible(true); 
         } else {
          new MainScreen().setVisible(true);
         }

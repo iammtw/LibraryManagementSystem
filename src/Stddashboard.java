@@ -200,7 +200,8 @@ String StdID;
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
-        new Search().setVisible(true);
+
+        new Search(StdID).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
