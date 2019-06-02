@@ -1,9 +1,12 @@
+import java.sql.Connection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UIManager;
 public class MainScreen extends javax.swing.JFrame {
-    public MainScreen() {
+    Connection conn;
+    public MainScreen() throws ClassNotFoundException {
         super("Library Management System");
+        conn = JavaConnection.ConnectDB();
         initComponents();
     }
     @SuppressWarnings("unchecked")
