@@ -276,34 +276,52 @@ public class StdProfile extends javax.swing.JFrame {
         String Password = password.getText();
         String Email = email.getText();
         
-        Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(Email);
-        if(!matcher.matches()) {
-            JOptionPane.showMessageDialog(null, "Please Enter Correct Email Format.");
-        }else{
-            try{
-                String sql = "Update student set studentid = ?,name = ?,fathername = ?,course =?,branch =?,year =?,semester=?,password=?,email=? where studentid = ?";
-                PreparedStatement st = conn.prepareStatement(sql);
+        if(!Name.isEmpty()){
+            if(!FatherName.isEmpty()){
+                if(!Password.isEmpty()){
+                         if(!Email.isEmpty()){
+                             Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+                            Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(Email);
+                            if(!matcher.matches()) {
+                                JOptionPane.showMessageDialog(null, "Please Enter Correct Email Format.");
+                            }else{
+                                try{
+                                    String sql = "Update student set studentid = ?,name = ?,fathername = ?,course =?,branch =?,year =?,semester=?,password=?,email=? where studentid = ?";
+                                    PreparedStatement st = conn.prepareStatement(sql);
 
-                st.setString(1, StudentID);
-                st.setString(2, Name);
-                st.setString(3, FatherName);
-                st.setString(4, Course);
-                st.setString(5, Branch);
-                st.setString(6, Year);
-                st.setString(7, Semester);
-                st.setString(8, Password);
-                st.setString(9, Email);
-                st.setString(10, StudentID);
-                st.execute();
-                JOptionPane.showMessageDialog(null, "Updated Successfully!!");
-                setVisible(false);
-                new Stddashboard(StudentID).setVisible(true);
+                                    st.setString(1, StudentID);
+                                    st.setString(2, Name);
+                                    st.setString(3, FatherName);
+                                    st.setString(4, Course);
+                                    st.setString(5, Branch);
+                                    st.setString(6, Year);
+                                    st.setString(7, Semester);
+                                    st.setString(8, Password);
+                                    st.setString(9, Email);
+                                    st.setString(10, StudentID);
+                                    st.execute();
+                                    JOptionPane.showMessageDialog(null, "Updated Successfully!!");
+                                    setVisible(false);
+                                    new Stddashboard(StudentID).setVisible(true);
 
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null,ex);
+                                } catch (SQLException ex) {
+                                    JOptionPane.showMessageDialog(null,ex);
+                                }
+                        }
+                        } else {
+                              JOptionPane.showMessageDialog(null, "Email must be Enter");
+                        }
+                } else {
+                     JOptionPane.showMessageDialog(null, "Password must be Enter");
+                }
+            } else {
+                 JOptionPane.showMessageDialog(null, "FatherName must be Enter");
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Name must be Enter");
         }
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyTyped

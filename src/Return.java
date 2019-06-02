@@ -237,21 +237,33 @@ public class Return extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String BookID = bookid.getText();
         String StudentID = studentid.getText();
-        try{
-            String sql = "SELECT * from issuebooks where bookid = '"+BookID+"' and studentid = '"+StudentID+"'";
-            PreparedStatement st = conn.prepareStatement(sql);
-            ResultSet rs =  st.executeQuery();
-            if(rs.next()){
-                bookname.setText(rs.getString(3));
-                studentname.setText(rs.getString(6));
-                issuedate.setText(rs.getString(5));
+        
+        if(!BookID.isEmpty()){
+            if(!StudentID.isEmpty()){
+                try{
+                    String sql = "SELECT * from issuebooks where bookid = '"+BookID+"' and studentid = '"+StudentID+"'";
+                    PreparedStatement st = conn.prepareStatement(sql);
+                    ResultSet rs =  st.executeQuery();
+                    if(rs.next()){
+                        bookname.setText(rs.getString(3));
+                        studentname.setText(rs.getString(6));
+                        issuedate.setText(rs.getString(5));
+                    } else {
+                        JOptionPane.showMessageDialog(null,"This Book is not Issued to this Student.");
+                    }
+
+                } catch (SQLException ex) {
+                   JOptionPane.showMessageDialog(null,"Please Enter Student and Book Details");
+                } 
             } else {
-                JOptionPane.showMessageDialog(null,"This Book is not Issued to this Student.");
+                JOptionPane.showMessageDialog(null, "StudentID is must!");
             }
-            
-        } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null,ex);
-        } 
+        } else {
+            JOptionPane.showMessageDialog(null, "BookID is must!");
+        }
+        
+        
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -297,16 +309,34 @@ public class Return extends javax.swing.JFrame {
     public void returnUpdate() throws SQLException, ClassNotFoundException{
         String sql2 = "INSERT into returnbooks(bookid,studentid,bookname,studentname,issuedate,returndate) values(?,?,?,?,?,?) ";
         PreparedStatement st = conn.prepareStatement(sql2);
-        st.setString(1, bookid.getText());
-        st.setString(2, studentid.getText());
-        st.setString(3, bookname.getText());
-        st.setString(4, studentname.getText());
-        st.setString(5, issuedate.getText());
-        st.setString(6, returndate.getText());
-        st.execute();
-        JOptionPane.showMessageDialog(null, "Book Return Successfully!!");
-        setVisible(false);
-        new dashboard().setVisible(true);
+        
+        String BookID = bookid.getText();
+        String StudentID =studentid.getText();
+        String BookName = bookname.getText();
+        String StudentName = studentname.getText();
+        String IssueDate = issuedate.getText();
+        String ReturnDate = returndate.getText();
+        
+        if(!BookID.isEmpty()){
+            if(!StudentID.isEmpty()){
+                st.setString(1, BookID);
+                st.setString(2, StudentID);
+                st.setString(3, BookName);
+                st.setString(4, StudentName);
+                st.setString(5, IssueDate);
+                st.setString(6, ReturnDate);
+                st.execute();
+                JOptionPane.showMessageDialog(null, "Book Return Successfully!!");
+                setVisible(false);
+                new dashboard().setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Student ID is Must.");
+            }  
+        } else {
+             JOptionPane.showMessageDialog(null, "Book ID is Must.");
+        }
+        
+        
     }
     /**
      * @param args the command line arguments

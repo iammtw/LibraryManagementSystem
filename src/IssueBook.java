@@ -311,30 +311,40 @@ public class IssueBook extends javax.swing.JFrame {
         String StudentName = sName.getText();
         String StudentCourse = sCourse.getText();
         String issueDate = date.getText();
-        System.out.println(issueDate);
        
         try{
-            String sql3 = "INSERT into issuebooks(bookid,bname,edition,date,sname,course,studentid) values(?,?,?,?,?,?,?)";
-            PreparedStatement st = conn.prepareStatement(sql3);
             
-            st.setString(1, BookID);
-            st.setString(2, BookName);
-            st.setString(3, BookEdition);
-            st.setString(4, issueDate);
-            st.setString(5, StudentName);
-            st.setString(6, StudentCourse);
-            st.setString(7, StudentID);
-            st.execute();
-            JOptionPane.showMessageDialog(null, "Book issued Successfully!!");
-            setVisible(false);
-            new dashboard().setVisible(true);
-            
+            String sqlA = "SELECT * from issuebooks where studentid = '"+studentid.getText()+"' and bookid ='"+bookid.getText()+"' ";
+            PreparedStatement st1 = conn.prepareStatement(sqlA);
+            ResultSet rs2 =  st1.executeQuery();
+            int size = 0;
+            if(rs2.next()){
+                size++;
+                if(size >0){
+                    JOptionPane.showMessageDialog(null, "Already Issued!");
+                } else {
+                     String sql3 = "INSERT into issuebooks(bookid,bname,edition,date,sname,course,studentid) values(?,?,?,?,?,?,?)";
+                    PreparedStatement st = conn.prepareStatement(sql3);
+
+                    st.setString(1, BookID);
+                    st.setString(2, BookName);
+                    st.setString(3, BookEdition);
+                    st.setString(4, issueDate);
+                    st.setString(5, StudentName);
+                    st.setString(6, StudentCourse);
+                    st.setString(7, StudentID);
+                    st.execute();
+                    JOptionPane.showMessageDialog(null, "Book issued Successfully!!");
+                    setVisible(false);
+                    new dashboard().setVisible(true);
+                        }
+                    } 
         } catch (SQLException ex) {
-//           JOptionPane.showMessageDialog(null,"Some Error Occured.Please Try Again.");
-JOptionPane.showMessageDialog(null,ex);
+            JOptionPane.showMessageDialog(null,"Please Insert Student Details and Books Details.");
         }  
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         setVisible(false);
         new dashboard().setVisible(true);

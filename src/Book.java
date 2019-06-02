@@ -258,26 +258,52 @@ public class Book extends javax.swing.JFrame {
         String Pages = pages.getText();
         String Author = author.getText();
         String Category = (String) category.getSelectedItem();
-        try{
-            String sql = "INSERT into book(bookid,name,edition,publisher,price,pages,author,category) values(?,?,?,?,?,?,?,?)";
-            PreparedStatement st = conn.prepareStatement(sql);
-            
-            st.setString(1, BookID);
-            st.setString(2, Name);
-            st.setString(3, Edition);
-            st.setString(4, Publisher);
-            st.setString(5, Price);
-            st.setString(6, Pages);
-            st.setString(7, Author);
-            st.setString(8, Category);
-            st.execute();
-            JOptionPane.showMessageDialog(null, "New Book Added Successfully!!");
-            setVisible(false);
-            new dashboard().setVisible(true);
-            
-        } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null,"Some Error Occured.Please Try Again.");
-        }  
+        
+        if(!Name.isEmpty()){
+            if(!Publisher.isEmpty()){
+                if(!Edition.isEmpty()){
+                    if(!Pages.isEmpty()){
+                        if(!Price.isEmpty()){
+                            if(!Author.isEmpty()){
+                               try{
+                                String sql = "INSERT into book(bookid,name,edition,publisher,price,pages,author,category) values(?,?,?,?,?,?,?,?)";
+                                PreparedStatement st = conn.prepareStatement(sql);
+
+                                st.setString(1, BookID);
+                                st.setString(2, Name);
+                                st.setString(3, Edition);
+                                st.setString(4, Publisher);
+                                st.setString(5, Price);
+                                st.setString(6, Pages);
+                                st.setString(7, Author);
+                                st.setString(8, Category);
+                                st.execute();
+                                JOptionPane.showMessageDialog(null, "New Book Added Successfully!!");
+                                setVisible(false);
+                                new dashboard().setVisible(true);
+                                } catch (SQLException ex) {
+                                   JOptionPane.showMessageDialog(null,"Some Error Occured.Please Try Again.");
+                                }  
+                            } else{
+                             JOptionPane.showMessageDialog(null, "Author can't be Empty.");   
+                            }
+                        } else{
+                          JOptionPane.showMessageDialog(null, "Price can't be Empty.");  
+                        }
+                    } else{
+                      JOptionPane.showMessageDialog(null, "Pages can't be Empty.");  
+                    }
+                } else{
+                   JOptionPane.showMessageDialog(null, "Edition can't be Empty."); 
+                }
+            } else{
+               JOptionPane.showMessageDialog(null, "Publisher can't be Empty."); 
+            }
+        } else{
+            JOptionPane.showMessageDialog(null, "Name can't be Empty.");
+        }
+        
+         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void priceKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceKeyTyped

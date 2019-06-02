@@ -198,25 +198,46 @@ public class Signup extends javax.swing.JFrame {
         String Password = password.getText();
         String Security_question = ((String)sec_q.getSelectedItem());
         String Answer = answer.getText();
-        try{
-            String sql = "INSERT into users(name,username,password,sec_q,answer) values(?,?,?,?,?)";
-            PreparedStatement st = conn.prepareStatement(sql);
+        
+        if(!Name.isEmpty()){
+            if(!Username.isEmpty()){
+                if(!Password.isEmpty()){
+                    if(!Answer.isEmpty()){
+                        try{
+                            String sql = "INSERT into users(name,username,password,sec_q,answer) values(?,?,?,?,?)";
+                            PreparedStatement st = conn.prepareStatement(sql);
+
+                            st.setString(1, Name);
+                            st.setString(2, Username);
+                            st.setString(3, Password);
+                            st.setString(4, Security_question);
+                            st.setString(5, Answer);
+                            st.execute();
+                            JOptionPane.showMessageDialog(null, "Registered Successfully!!");
+                            setVisible(false);
+                            new Login().setVisible(true);
+
+                        } catch (SQLException ex) {
+                           JOptionPane.showMessageDialog(null,ex);
+                        } catch (ClassNotFoundException ex) {
+                            Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
+                        } 
+                    } else {
+                      JOptionPane.showMessageDialog(null, "Answer Must Enter Please!");  
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Password Must Enter Please!");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Username Must Enter Please!");
+            }
             
-            st.setString(1, Name);
-            st.setString(2, Username);
-            st.setString(3, Password);
-            st.setString(4, Security_question);
-            st.setString(5, Answer);
-            st.execute();
-            JOptionPane.showMessageDialog(null, "Registered Successfully!!");
-            setVisible(false);
-            new Login().setVisible(true);
-            
-        } catch (SQLException ex) {
-           JOptionPane.showMessageDialog(null,ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Signup.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        } else{
+          JOptionPane.showMessageDialog(null, "Name Must Enter Please!");
+        }
+        
+        
+        
     
     }
     
