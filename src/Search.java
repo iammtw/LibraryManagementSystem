@@ -164,7 +164,11 @@ public class Search extends javax.swing.JFrame {
         if(StdLogin.isLoggedIn){
            new Stddashboard(StdID).setVisible(true); 
         } else {
-         new MainScreen().setVisible(true);
+            try {
+                new MainScreen().setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Search.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 //        new MainScreen().setVisible(true);
 

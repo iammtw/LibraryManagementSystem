@@ -187,7 +187,11 @@ UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainScreen().setVisible(true);
+                try {
+                    new MainScreen().setVisible(true);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(MainScreen.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
