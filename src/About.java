@@ -55,7 +55,7 @@ public class About extends javax.swing.JFrame {
         jLabel7.setText("Muhammad Talha Waseem        (SP18-BSE-126)");
 
         jLabel5.setFont(new java.awt.Font("Raleway", 2, 18)); // NOI18N
-        jLabel5.setText("Syed Faheem Shah                          (SP18-BSE-135)");
+        jLabel5.setText("Syed Faheem Shah                          (SP18-BSE-136)");
 
         jLabel6.setFont(new java.awt.Font("Raleway", 2, 18)); // NOI18N
         jLabel6.setText("Sheryar Hassan Khan                      (SP18-BSE-149)");
@@ -98,7 +98,7 @@ public class About extends javax.swing.JFrame {
                         .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 41, Short.MAX_VALUE)
+                .addGap(0, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)

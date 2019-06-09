@@ -10,8 +10,15 @@ import net.proteanit.sql.DbUtils;
 
 public class SearchByName extends javax.swing.JFrame {
     Connection conn;
+    public String StdID;
     public SearchByName() throws ClassNotFoundException {
         conn = JavaConnection.ConnectDB();
+        initComponents();
+    }
+    
+    public SearchByName(String StdID) throws ClassNotFoundException {
+        conn = JavaConnection.ConnectDB();
+        this.StdID = StdID;
         initComponents();
     }
 
@@ -123,7 +130,15 @@ public class SearchByName extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
-        new Search().setVisible(true);
+        if(StdLogin.isLoggedIn){
+           new Search(StdID).setVisible(true); 
+        } else {
+            try {
+                new MainScreen().setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Search.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void name(){

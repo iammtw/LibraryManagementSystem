@@ -177,7 +177,7 @@ public class Search extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         setVisible(false);
         try {
-            new SearchByISBN().setVisible(true);
+            new SearchByISBN(StdID).setVisible(true);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Search.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -186,7 +186,7 @@ public class Search extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         setVisible(false);
         try {
-            new SearchByName().setVisible(true);
+            new SearchByName(StdID).setVisible(true);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Search.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -195,7 +195,7 @@ public class Search extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        setVisible(false);
         try {
-            new SearchByCategory().setVisible(true);
+            new SearchByCategory(StdID).setVisible(true);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Search.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -204,7 +204,7 @@ public class Search extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         setVisible(false);
         try {
-            new SearchByAuthor().setVisible(true);
+            new SearchByAuthor(StdID).setVisible(true);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Search.class.getName()).log(Level.SEVERE, null, ex);
         }
