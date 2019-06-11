@@ -1,4 +1,3 @@
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +10,7 @@ import javax.swing.UIManager;
 public class Forgot extends javax.swing.JFrame {
     Connection conn;
     public Forgot() throws ClassNotFoundException {
-         super("Forgot Password");
+        super("Forgot Password");
         conn = JavaConnection.ConnectDB();
         initComponents();
     }

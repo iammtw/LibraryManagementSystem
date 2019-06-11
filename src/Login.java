@@ -167,8 +167,9 @@ public class Login extends javax.swing.JFrame {
             st.setString(2, Password);
             ResultSet rs =  st.executeQuery();
             if (rs.next()){
+                MainScreen.isLoggedInAs = "admin";
                 Splash s = new Splash();
-                s.setUpload();
+                s.setRun();
                 s.setVisible(true);
                 setVisible(false);
             } else {

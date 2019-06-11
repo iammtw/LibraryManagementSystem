@@ -152,9 +152,10 @@ public class StdLogin extends javax.swing.JFrame {
             ResultSet rs =  st.executeQuery();
             if (rs.next()){
                 String id = rs.getString(2);
-                StdSplash s = new StdSplash(id);
+                MainScreen.isLoggedInAs = "student";
+                Splash s = new Splash(id);
                 StdLogin.isLoggedIn = true;
-                s.setUpload();
+                s.setRun();
                 s.setVisible(true);
                 setVisible(false);
             } else {

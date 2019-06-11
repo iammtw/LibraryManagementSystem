@@ -8,8 +8,14 @@ public class Splash extends javax.swing.JFrame implements Runnable {
         th = new Thread((Runnable)this);
         initComponents();
     }
+     String id;
+     public Splash(String id) {
+        this.id = id;
+        th = new Thread((Runnable)this);
+        initComponents();
+    }
     
-    public void setUpload(){
+    public void setRun(){
         setVisible(false);
         th.start();
     }
@@ -22,9 +28,13 @@ public class Splash extends javax.swing.JFrame implements Runnable {
                if (value < maximum){
                    bar.setValue(bar.getValue()+1);
                } else {
-                   i=201;
                    setVisible(false);
-                   new dashboard().setVisible(true);
+                   if ("admin".equals(MainScreen.isLoggedInAs)){
+                       new dashboard().setVisible(true);
+                   } else{
+                       new Stddashboard().setVisible(true);
+                   }
+                   
                }Thread.sleep(20);
            } 
         } catch(InterruptedException e){
