@@ -88,6 +88,9 @@ public class IssueBook extends javax.swing.JFrame {
         jLabel3.setText("Edition");
 
         bookid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                bookidKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 bookidKeyTyped(evt);
             }
@@ -154,6 +157,9 @@ public class IssueBook extends javax.swing.JFrame {
         jLabel5.setText("Course");
 
         studentid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                studentidKeyPressed(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 studentidKeyTyped(evt);
             }
@@ -314,7 +320,7 @@ public class IssueBook extends javax.swing.JFrame {
        
         try{
             
-            String sqlA = "SELECT * from issuebooks where studentid = '"+studentid.getText()+"' and bookid ='"+bookid.getText()+"' ";
+            String sqlA = "SELECT * from issuebooks where studentid = '"+StudentID+"' and bookid ='"+BookID+"' ";
             PreparedStatement st1 = conn.prepareStatement(sqlA);
             ResultSet rs2 =  st1.executeQuery();
             int size = 0;
@@ -322,23 +328,24 @@ public class IssueBook extends javax.swing.JFrame {
                 size++;
                 if(size >0){
                     JOptionPane.showMessageDialog(null, "Already Issued!");
-                } else {
-                     String sql3 = "INSERT into issuebooks(bookid,bname,edition,date,sname,course,studentid) values(?,?,?,?,?,?,?)";
-                    PreparedStatement st = conn.prepareStatement(sql3);
+                } 
+            } else {
+                String sql3 = "INSERT into issuebooks(bookid,bname,edition,date,sname,course,studentid) values(?,?,?,?,?,?,?)";
+                PreparedStatement st = conn.prepareStatement(sql3);
 
-                    st.setString(1, BookID);
-                    st.setString(2, BookName);
-                    st.setString(3, BookEdition);
-                    st.setString(4, issueDate);
-                    st.setString(5, StudentName);
-                    st.setString(6, StudentCourse);
-                    st.setString(7, StudentID);
-                    st.execute();
-                    JOptionPane.showMessageDialog(null, "Book issued Successfully!!");
-                    setVisible(false);
-                    new dashboard().setVisible(true);
-                        }
-                    } 
+                st.setString(1, BookID);
+                st.setString(2, BookName);
+                st.setString(3, BookEdition);
+                st.setString(4, issueDate);
+                st.setString(5, StudentName);
+                st.setString(6, StudentCourse);
+                st.setString(7, StudentID);
+                st.execute();
+                JOptionPane.showMessageDialog(null, "Book issued Successfully!!");
+                setVisible(false);
+                new dashboard().setVisible(true);       
+            } 
+             
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null,"Please Insert Student Details and Books Details.");
         }  
@@ -365,6 +372,16 @@ public class IssueBook extends javax.swing.JFrame {
            evt.consume();
        }
     }//GEN-LAST:event_studentidKeyTyped
+
+    private void bookidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_bookidKeyPressed
+        bName.setText(null);
+        bEdition.setText(null);
+    }//GEN-LAST:event_bookidKeyPressed
+
+    private void studentidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_studentidKeyPressed
+       sName.setText(null);
+       sCourse.setText(null);
+    }//GEN-LAST:event_studentidKeyPressed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

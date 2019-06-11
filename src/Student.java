@@ -257,7 +257,6 @@ public class Student extends javax.swing.JFrame {
         if(!matcher.matches()) {
                 JOptionPane.showMessageDialog(null, "Please Enter Correct Email Format.");
         }else{
-      
         try{
             String sql = "INSERT into student(studentid,name,fathername,course,branch,year,semester,password,email) values(?,?,?,?,?,?,?,?,?)";
             PreparedStatement st = conn.prepareStatement(sql);
@@ -283,7 +282,7 @@ public class Student extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameKeyTyped
-         char c = evt.getKeyChar();
+        char c = evt.getKeyChar();
         if((Character.isLetter(c)) || (c==KeyEvent.VK_SPACE)) {
         } else {
             getToolkit().beep();

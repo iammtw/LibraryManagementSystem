@@ -4,11 +4,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Stddashboard extends javax.swing.JFrame {
-String StdID;
+   String StdID;
     public Stddashboard() {
         initComponents();
     }
-     public Stddashboard(String StdID) {
+    public Stddashboard(String StdID) {
         super("Dashboard");
         initComponents();
         this.StdID = StdID;
