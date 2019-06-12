@@ -1,3 +1,7 @@
+import doryan.windowsnotificationapi.fr.Notification;
+import java.awt.AWTException;
+import java.awt.TrayIcon;
+import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -216,6 +220,7 @@ public class Forgot extends javax.swing.JFrame {
             if(rs.next()){
                 password.setText(rs.getString(4));
                 answer.setEditable(false);
+                Notification.sendNotification("LMS", "Try to Create Complex Passwords", TrayIcon.MessageType.INFO);
             } else {
                 JOptionPane.showMessageDialog(null,"Wrong Answer! Please Try Again.");
             }
@@ -223,6 +228,10 @@ public class Forgot extends javax.swing.JFrame {
             // database code
         } catch (SQLException ex) {
            JOptionPane.showMessageDialog(null,ex);
+        } catch (AWTException ex) {
+            Logger.getLogger(Forgot.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Forgot.class.getName()).log(Level.SEVERE, null, ex);
         } 
         
     }//GEN-LAST:event_jButton2ActionPerformed

@@ -32,7 +32,7 @@ public class Splash extends javax.swing.JFrame implements Runnable {
                    if ("admin".equals(MainScreen.isLoggedInAs)){
                        new dashboard().setVisible(true);
                    } else{
-                       new Stddashboard().setVisible(true);
+                       new Stddashboard(id).setVisible(true);
                    }
                    
                }Thread.sleep(20);

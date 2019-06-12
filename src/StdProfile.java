@@ -1,4 +1,8 @@
 import com.sun.glass.events.KeyEvent;
+import doryan.windowsnotificationapi.fr.Notification;
+import java.awt.AWTException;
+import java.awt.TrayIcon;
+import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -300,13 +304,14 @@ public class StdProfile extends javax.swing.JFrame {
                                     st.setString(9, Email);
                                     st.setString(10, StudentID);
                                     st.execute();
-                                    JOptionPane.showMessageDialog(null, "Updated Successfully!!");
-                                    setVisible(false);
-                                    new Stddashboard(StudentID).setVisible(true);
-
+                                   Notification.sendNotification("LMS", "Updated Successfully", TrayIcon.MessageType.INFO);
                                 } catch (SQLException ex) {
                                     JOptionPane.showMessageDialog(null,ex);
-                                }
+                                } catch (AWTException ex) {
+                                     Logger.getLogger(StdProfile.class.getName()).log(Level.SEVERE, null, ex);
+                                 } catch (MalformedURLException ex) {
+                                     Logger.getLogger(StdProfile.class.getName()).log(Level.SEVERE, null, ex);
+                                 }
                         }
                         } else {
                               JOptionPane.showMessageDialog(null, "Email must be Enter");

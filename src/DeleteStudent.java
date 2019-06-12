@@ -1,5 +1,9 @@
 
 import com.sun.glass.events.KeyEvent;
+import doryan.windowsnotificationapi.fr.Notification;
+import java.awt.AWTException;
+import java.awt.TrayIcon;
+import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -131,16 +135,16 @@ public class DeleteStudent extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void deleteBook(String id) throws SQLException{
+    private void deleteBook(String id) throws SQLException, AWTException, MalformedURLException{
         String sql = "Delete from student where studentid='"+id+"'";
          try (PreparedStatement st = conn.prepareStatement(sql)) {
              Boolean result = st.execute();
              if(result == false){
-                 JOptionPane.showMessageDialog(null, "Deleted Successfully!");
-                 setVisible(false);
-                 setVisible(true);
+                Notification.sendNotification("LMS", "Deleted Successfully", TrayIcon.MessageType.INFO);
+                stdName.setText(null);
+                stdid.setText(null);
              } else {
-                 JOptionPane.showMessageDialog(null, "Error Occured");
+                 Notification.sendNotification("LMS", "Error Occurred", TrayIcon.MessageType.ERROR);
              }}
     }
     
@@ -165,6 +169,10 @@ public class DeleteStudent extends javax.swing.JFrame {
              new Delete().setVisible(true);
          } catch (SQLException ex) {
              Logger.getLogger(DeleteBook.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (AWTException ex) {
+             Logger.getLogger(DeleteStudent.class.getName()).log(Level.SEVERE, null, ex);
+         } catch (MalformedURLException ex) {
+             Logger.getLogger(DeleteStudent.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_jButton1ActionPerformed
 
